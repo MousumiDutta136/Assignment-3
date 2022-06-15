@@ -11,6 +11,8 @@ import { DataStoreService } from './data-store.service';
 export class ProductsService {
 
   constructor(private http: HttpClient, private dataStore: DataStoreService) {
+    this.getProducts();
+    this.getOrderData();
   }
 
   getProducts() {

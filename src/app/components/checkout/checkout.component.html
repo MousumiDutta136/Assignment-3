@@ -1,0 +1,90 @@
+<!--<confirmation [orderTotal]="orderTotal" [orderNumber]="orderNumber"></confirmation>-->
+<div class="container">
+  <div class="row justify-content-sm-center pt-5">
+      <div class="col-sm-6 shadow round pb-3">
+        <h1 class="text-center pt-3 text-secondary">CheckOut Form</h1>
+    <form [formGroup]="form">
+
+    <div class="form-group">
+      <label class="col-form-label" for="firstName">First Name</label><br>
+      <input formControlName="firstName" id="firstName" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+     <label class="col-form-label" for="lastName">Last Name</label><br>
+      <input formControlName="lastName" id="lastName" type="text">
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label" for="address">Address</label><br>
+      <input formControlName="address" id="address" type="text">
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label" for="city">City</label><br>
+      <input formControlName="city" id="city" type="text">
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label" for="postalCode">Postal Code</label><br>
+      <input formControlName="postalCode" id="postalCode" type="text">
+    </div>
+    <br>
+    <div class="form-group">
+      <select  formControlName="country">
+        <option value="">Choose Country:</option>
+        <option *ngFor="let country of Country" [ngValue]="country">
+          {{country}}
+        </option>
+      </select>
+    </div>
+
+    <br>
+    <div class="form-group">
+      <select formControlName="cardType">
+        <option value="">Choose a Card Type</option>
+        <option *ngFor="let cardtype of Cardtype" [ngValue]="cardtype">
+          {{cardtype}}
+        </option>
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label class="col-form-label" for="creditCardNo">Credit Card Number</label><br>
+      <input formControlName="creditCardNo" id="creditCardNo" type="text">
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label" for="expiry">Expiry</label><br>
+      <input formControlName="expiry" id="expiry" type="text">
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label" for="cvc">CVC</label><br>
+      <input formControlName="cvc" id="cvc" type="text"
+      appMaxLength [maxLength]="4" [formCtrl]="form.get('cvc')" >
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label" for="nameOnCard">Name on card</label><br>
+      <input formControlName="nameOnCard" id="nameOnCard" type="text">
+    </div>
+
+  <br>
+    <button [disabled]="form.valid"
+      type="submit"
+      (click)="submit()"
+       [disabled]="!form.valid">
+      Submit For Chekout
+    </button>
+
+  </form>
+  </div>
+
+</div>
+</div>
+
+<div>
+  Total:{{total}}
+</div>
+

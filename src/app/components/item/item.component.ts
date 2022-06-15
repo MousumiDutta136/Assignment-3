@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ProductData } from 'src/app/models/product.interface';
 import { DataStoreService } from 'src/app/services/data-store.service';
 
@@ -9,6 +9,7 @@ import { DataStoreService } from 'src/app/services/data-store.service';
 })
 export class ItemComponent implements OnInit {
   @Input() product!: ProductData;
+
 
   constructor(private dataStore: DataStoreService) { }
 

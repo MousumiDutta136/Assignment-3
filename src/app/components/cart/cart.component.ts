@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProductData } from 'src/app/models/product.interface';
 import { DataStoreService } from 'src/app/services/data-store.service';
@@ -9,8 +10,11 @@ import { DataStoreService } from 'src/app/services/data-store.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+
   cartItems$!: Observable<ProductData[]>;
-  constructor(private dataStore: DataStoreService) { }
+
+
+  constructor(private dataStore: DataStoreService, private router: Router) { }
 
   ngOnInit(): void {
     this.cartItems$ = this.dataStore.cartItems$;
@@ -18,5 +22,12 @@ export class CartComponent implements OnInit {
 
   clearCart() {
     this.dataStore.clearCart();
+  }
+
+  checkoutCart() {
+
+    this.router.navigateByUrl('/checkout');
+
+
   }
 }

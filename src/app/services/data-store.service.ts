@@ -1,3 +1,4 @@
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, take } from 'rxjs';
 import { OrderData } from '../models/order.interface';
@@ -15,7 +16,8 @@ export class DataStoreService {
 
   private _cartItems: BehaviorSubject<ProductData[] | any> = new BehaviorSubject([]);
   cartItems$: Observable<ProductData[]> = this._cartItems.asObservable();
-  private fullProductList!: ProductData[]
+  private fullProductList!: ProductData[];
+  total = 0;
 
 
   constructor() { }
@@ -38,6 +40,17 @@ export class DataStoreService {
     ).subscribe((cartItems: ProductData[]) => {
       cartItems.push(item);
       this._cartItems.next(cartItems);
+    });
+
+  }
+
+  addToOrder(item: OrderData) {
+    this._orders.pipe(
+      take(1)
+    ).subscribe((orderItems: OrderData[]) => {
+      orderItems.push(item);
+      this._orders.next(orderItems);
+      console.log(orderItems);
     });
   }
 

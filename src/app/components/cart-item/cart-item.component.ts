@@ -8,9 +8,13 @@ import { ProductData } from 'src/app/models/product.interface';
 })
 export class CartItemComponent implements OnInit {
   @Input() item!: ProductData;
+
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.item);
+    
   }
 
 }

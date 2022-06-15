@@ -21,6 +21,10 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { MaxLengthDirective } from './max-length.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { DatePipe } from '@angular/common';
     NavBarComponent,
     ItemComponent,
     CartItemComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    CheckoutComponent,
+    ConfirmationComponent,
+    MaxLengthDirective
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,8 @@ import { DatePipe } from '@angular/common';
     NoopAnimationsModule,
     MatCardModule,
     HttpClientModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

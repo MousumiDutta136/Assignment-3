@@ -16,7 +16,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   constructor(private dataStore: DataStoreService, private productsService: ProductsService) { }
 
   ngOnInit(): void {
-    this.productsService.getOrderData();
+    //this.productsService.getOrderData();
     this.ordersSubscription = this.dataStore.orders$.subscribe(orders => {
       this.orders = orders;
     })
